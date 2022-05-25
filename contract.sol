@@ -315,3 +315,107 @@ contract walletDevelopment {
 
 
 ///////////////////// END ///////////////////
+
+
+
+
+
+// Hash Function 
+/////////////////// START ///////////////////
+
+
+ contract HashFunction {
+ 
+     function hash(string memory _text , uint _num , address _addr)
+     public pure returns(bytes32)
+     {
+
+         return keccak256(abi.encodePacked(_text , _num , _addr));
+
+     }
+     
+//0xe5d11b08737f5dbf924278d835533b2b1e65c2fe1b5b119c5fdd21555547b9c4
+//0x1edf4aae368e845d5d1cd28aec0624c467d538ecc7e5660765ed2afedca37aca
+//0x40120e57c637c5d216032d19c65bc64e072b32cfe0a6b4f0e6c65ddbaf251fff
+     function collision(string memory _text , string memory _secText)
+     public pure returns(bytes32)
+     {
+                                         // AA = BBB  == AABBB           
+         return keccak256(abi.encode(_text , _secText));
+     }
+ }
+
+contract GuessTheMagicWorld{
+ //0x541111248b45b7a8dc3f5579f630e74cb01456ea6ac067d3f4d793245a255155
+
+    function hash(string memory _text)
+     public pure returns(bytes32)
+     {
+         return keccak256(abi.encodePacked(_text));
+
+     }
+
+    bytes32 public answer = 0x541111248b45b7a8dc3f5579f630e74cb01456ea6ac067d3f4d793245a255155;
+
+     function guess(string memory _word) public view returns (bool) {
+         return keccak256(abi.encodePacked(_word)) == answer;
+     }
+}
+
+
+////////////////////// END /////////////////////////////
+
+
+
+// Call Other contract function 
+
+///////////////////////////// START /////////////////////////
+
+contract Callme {
+    uint public x;
+    uint public value;
+    uint public addv1;
+    
+
+    function setX(uint _x) public returns(uint) {
+        x = _x;
+        return x;
+    }
+
+    function add(uint _a, uint _b) public returns(uint) {
+        addv1 = _a + _b;
+        return addv1;
+    }
+
+     function setXandSendEther(uint _x) public payable returns (uint , uint) {
+
+        x = _x;
+        value = msg.value;
+        
+        return (x , value);
+    }
+//0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005
+}
+
+contract Caller {
+
+     function setValueOFContractCallme(Callme _call , uint _x) public {
+         
+         uint x = _call.setX(_x);
+         uint x1 = _call.add(_x , 1);
+     }
+     function addValueOfContractCallme(Callme _call , uint _x, uint _y) public {
+                     //   add (1 , 2)  
+         
+     }
+     function setXandSendEther(Callme _call , uint _x) public payable {
+
+     }
+
+
+}
+
+
+////////////////////// END //////////////////////////////////
+
+
