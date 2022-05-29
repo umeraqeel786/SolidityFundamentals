@@ -4,27 +4,25 @@ pragma solidity >=0.7.0 <0.9.0;
 
 // Function contract 
 ////////////////// Start ///////////////
+
  contract funcBehaviour {
  
     uint age = 30;
    
     function getAge() public view returns (uint){
-
         return age;
     }
-    function GetNumber() public pure returns (uint)
-    {
+    
+    function GetNumber() public pure returns (uint){
          uint Number =  150;
-        return Number;
+         return Number;
     }
 
     uint public recieveamount; //1
 
-
     function GetAmount() public payable
     {
      recieveamount = recieveamount + msg.value; //1
-   
     }
 }
 
@@ -37,7 +35,6 @@ pragma solidity >=0.7.0 <0.9.0;
 ////////////   start //////////////////
 
 contract Student {
-
 
      uint public age;
      string public name;
@@ -94,6 +91,7 @@ contract modifierExample {
 
 // Array Contract 
 ////////////// Start ////////////////////
+
 contract Array{
 
     uint[] public dynamicArray;         // dynamic
@@ -164,7 +162,6 @@ contract stuctsExample {
 
 
 // Mapping contract 
-
 /////////////// Start //////////////////
 
 contract mappingExample {
@@ -172,27 +169,23 @@ contract mappingExample {
    mapping(uint => address) public myAddress;
 
    function add(uint id, address _addr) public {
-       myAddress[id] = _addr;
-       
+       myAddress[id] = _addr;    
    }
 }
 
 //////////////// End /////////////////
 
 
+
 // Enum Contract 
-
 /////////////// Start /////////////
-
 
 contract enumExample {
 
-       enum Status {
-                   
+       enum Status {         
             Pending, 
             Approved,
-            Reject
-           
+            Reject      
        }
 
        Status public status;
@@ -200,7 +193,6 @@ contract enumExample {
 
        function Approved() public {
            require(status == Status.Pending);
-         
            status = Status.Approved;
            statusCheck =  "Approved";
 
@@ -217,8 +209,8 @@ contract enumExample {
 
 
 
-// Sending and reciving ETH Contract
 
+// Sending and reciving ETH Contract
 ////////////////// Start ///////////////////
 
 // 1 transfer
@@ -267,10 +259,9 @@ contract sendEther {
 
 
 
+
 // Wallet development Contract (Using event)
-
 ///////////// Start //////////////////
-
 
 contract walletDevelopment {
  
@@ -323,7 +314,6 @@ contract walletDevelopment {
 // Hash Function 
 /////////////////// START ///////////////////
 
-
  contract HashFunction {
  
      function hash(string memory _text , uint _num , address _addr)
@@ -367,8 +357,8 @@ contract GuessTheMagicWorld{
 
 
 
-// Call Other contract function 
 
+// Call Other contract function 
 ///////////////////////////// START /////////////////////////
 
 contract Callme {
@@ -405,8 +395,7 @@ contract Caller {
          uint x1 = _call.add(_x , 1);
      }
      function addValueOfContractCallme(Callme _call , uint _x, uint _y) public {
-                     //   add (1 , 2)  
-         
+                     //   add (1 , 2)         
      }
      function setXandSendEther(Callme _call , uint _x) public payable {
 
@@ -418,4 +407,77 @@ contract Caller {
 
 ////////////////////// END //////////////////////////////////
 
+
+
+// Player State Contract ///
+//////////////////// START ///////////////////////
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.7.0 <0.9.0;
+
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract playerState is Ownable{
+    
+ 
+   struct Player {
+       string hash;
+       address playerAddress;
+       uint score;
+   }
+
+   uint public playerCount;
+   mapping(uint => Player) public playerMapping;
+   mapping(address => bool) public whitelistedAddresses;
+
+   event AddingNewPlayer (
+       uint playerId,
+       address playerAddress
+   );
+
+    modifier isWhitelisted() {
+        require(whitelistedAddresses[msg.sender], "Unauthorized Address");
+        _;
+    }
+
+   function addWhitelistedAddress(address addWhitelistedAddress) external onlyOwner {
+       whitelistedAddresses[addWhitelistedAddress] = true;
+   }
+   
+   function removeWhitelistedAddress(address addWhitelistedAddress) external onlyOwner{
+       whitelistedAddresses[addWhitelistedAddress] = false;
+   }
+
+
+   function createNewPlayer(
+       string memory _hash,
+       address _playerAddress,
+       uint _score
+   ) external 
+     isWhitelisted
+   {
+
+       playerCount++;
+       playerMapping[playerCount] = Player(_hash, _playerAddress, _score);
+       emit AddingNewPlayer(playerCount,_playerAddress);
+
+   }
+
+
+   function UpdatingPlayer(
+       uint playerId,
+       string memory _hash,
+       address _playerAddress,
+       uint _score
+   )
+   external
+   {
+       playerMapping[playerId].hash = _hash;
+       playerMapping[playerId].playerAddress = _playerAddress;
+       playerMapping[playerId].score = _score;
+       
+   }
+
+}
 
