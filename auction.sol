@@ -39,10 +39,8 @@ contract Auction {
 
        nft = IERC721(_nft);
        nftId = _nftId;
-
     }
     
-
     function getPrice() public view returns (uint) {
         uint timeElapsed = block.timestamp - startAt;
         uint discount = discountRate * timeElapsed;
@@ -50,7 +48,6 @@ contract Auction {
     }
    
     function buy() external payable {
-
       require(block.timestamp < expiresAt, "Auction Expired");
       uint price = getPrice();
       require(msg.value >= price, "Please send more ether");
@@ -60,10 +57,9 @@ contract Auction {
       if(refund > 0 ){
         payable(msg.sender).transfer(refund);
       }
-
+      
       selfdestruct(seller);
+    
     }
-
-
 
 }
