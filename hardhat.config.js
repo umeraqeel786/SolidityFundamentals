@@ -15,9 +15,9 @@ module.exports = {
   networks: {
     hardhat: {},
     rinkeby: {
-      url: "https://rinkeby.infura.io/v3/54864fd661734a288da4dcdda1ad2f7c",
+      url: "INFURA_URL",
       accounts: [
-        `0x${"68c19015a5cf5e46862347077574f92088e77bb0c40f1b78200e70c508c285da"}`,
+        `0x${"PRIVATE_KEY"}`,
       ],
       gasMultiplier: 1,
       gas: 2100000,
