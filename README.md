@@ -15,7 +15,7 @@ $ npm i
 
 ```
 $ PRIVATE_KEY
-RPC_URL
+  RPC_URL
 ```
 
 ## Compiling contracts

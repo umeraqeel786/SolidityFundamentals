@@ -1,6 +1,6 @@
 const ethers = require("ethers");
-const API_URL = "https://rinkeby.infura.io/v3/54864fd661734a288da4dcdda1ad2f7c";
-const CONTRACT_ADDRESS = "0x28B8796E53592Cb4FB76Df22BdEc17Afd6C83D1B";
+const API_URL = "API_URL";
+const CONTRACT_ADDRESS = "CONTRACT_ADDRESS";
 const CONTRACT_ABI = require("../artifacts/contracts/PlayerContract.sol/PlayerContract.json");
 
 let customHttpProvider = new ethers.providers.JsonRpcProvider(API_URL);

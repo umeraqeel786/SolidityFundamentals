@@ -1,7 +1,7 @@
 async function main() {
   // We get the contract to deploy
   const Player = await ethers.getContractFactory("PlayerContract");
-  console.log("Deploying playerox Contract . . . . ");
+  console.log("Deploying player Contract . . . . ");
   const player = await Player.deploy();
 
   await player.deployed();
