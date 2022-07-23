@@ -29,7 +29,7 @@ Now, deploy this contract to rinkeby testnet. Run the deployment script deploy.j
 
 ```
 $ npx hardhat run scripts/deploy.js
-Contract deployed  successfully
+Contract deployed successfully
 ```
 
 ## Sending transaction to blockchain 
@@ -41,7 +41,7 @@ $ node broadcastTx.js
 Tx is Successfull
 ```
 
-## Getting blockchain transaction
+## Getting transaction from blockchain
 
 Get the transaction using ether-js. Run the node-js script getTx.js present in the scripts folder, using following command:
 
