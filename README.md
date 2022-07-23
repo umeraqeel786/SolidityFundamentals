@@ -11,6 +11,13 @@ $ npm i
 
 ```
 
+## Update your Hardhat.config.js file accordingly
+
+```
+$ PRIVATE_KEY
+RPC_URL
+```
+
 ## Compiling contracts
 
 To compile the contract run `npx hardhat compile` in your terminal. The `compile` task is one of the built-in tasks.
@@ -30,6 +37,15 @@ Now, deploy this contract to rinkeby testnet. Run the deployment script deploy.j
 ```
 $ npx hardhat run scripts/deploy.js
 Contract deployed successfully
+```
+
+## Update your both script files accordingly
+
+```
+$ PRIVATE_KEY
+  RPC_URL
+  CONTRACT_ADDRESS
+  CONTRACT_ABI
 ```
 
 ## Sending transaction to blockchain 
