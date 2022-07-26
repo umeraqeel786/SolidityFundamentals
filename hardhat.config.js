@@ -1,5 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
+require('dotenv').config();
+
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async () => {
@@ -15,9 +17,9 @@ module.exports = {
   networks: {
     hardhat: {},
     rinkeby: {
-      url: "INFURA_URL",
+      url: process.env.API_KEY,
       accounts: [
-        `0x${"PRIVATE_KEY"}`,
+        `0x${process.env.PRIVATE_KEY}`,
       ],
       gasMultiplier: 1,
       gas: 2100000,

@@ -1,7 +1,10 @@
 const ethers = require("ethers");
-const API_URL = "API_URL";
-const PRIVATE_KEY = "PRIVATE_KEY";
-const CONTRACT_ADDRESS = "CONTRACT_ADDRESS";
+require("dotenv").config({ path: __dirname + "/./../.env" });
+
+
+const API_URL = process.env.API_KEY;
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
 const CONTRACT_ABI = require("../artifacts/contracts/PlayerContract.sol/PlayerContract.json");
 
 let customHttpProvider = new ethers.providers.JsonRpcProvider(API_URL);
