@@ -14,8 +14,8 @@ $ npm i
 ## Update your Hardhat.config.js file accordingly
 
 ```
-$ PRIVATE_KEY
-  RPC_URL
+PRIVATE_KEY
+RPC_URL
 ```
 
 ## Compiling contracts
@@ -42,10 +42,10 @@ Contract deployed successfully
 ## Update your both script files accordingly
 
 ```
-$ PRIVATE_KEY
-  RPC_URL
-  CONTRACT_ADDRESS
-  CONTRACT_ABI
+PRIVATE_KEY
+RPC_URL
+CONTRACT_ADDRESS
+CONTRACT_ABI
 ```
 
 ## Sending transaction to blockchain 
