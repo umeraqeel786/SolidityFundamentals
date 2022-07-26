@@ -4,21 +4,22 @@
 
 Most Ethereum libraries and tools are written in JavaScript, and so is **Hardhat**. If you're not familiar with Node.js, it's a JavaScript runtime built on Chrome's V8 JavaScript engine. It's the most popular solution to run JavaScript outside of a web browser and **Hardhat** is built on top of it.
 
-## Installing
+### Installing
 
 ```
 $ npm i 
 
 ```
 
-## Update your Hardhat.config.js file accordingly
+### Update your .env file accordingly
 
 ```
-PRIVATE_KEY
-RPC_URL
+API_KEY=""
+PRIVATE_KEY=""
+CONTRACT_ADDRESS=""
 ```
 
-## Compiling contracts
+### Compiling contracts
 
 To compile the contract run `npx hardhat compile` in your terminal. The `compile` task is one of the built-in tasks.
 
@@ -28,7 +29,7 @@ Compiling 1 file with 0.7.3
 Compilation finished successfully
 ```
 
-## Deploying contracts
+### Deploying contracts
 
 The contract has been successfully compiled and is ready to be used.
 
@@ -39,28 +40,24 @@ $ npx hardhat run scripts/deploy.js
 Contract deployed successfully
 ```
 
-## Update your both script files accordingly
+### Use existing .env files for both scripts
+
+Add your CONTRACT_ABI in both scripts file
+
+
+### Sending transaction to blockchain 
+
+Send the transaction using ether-js. Run the node-js script sendTransaction.js present in the scripts folder, using following command:
 
 ```
-PRIVATE_KEY
-RPC_URL
-CONTRACT_ADDRESS
-CONTRACT_ABI
-```
-
-## Sending transaction to blockchain 
-
-Send the transaction using ether-js. Run the node-js script broadcatTx.js present in the scripts folder, using following command:
-
-```
-$ node broadcastTx.js 
+$ node sendTransaction.js 
 Tx is Successfull
 ```
 
-## Getting transaction from blockchain
+### Getting transaction from blockchain
 
-Get the transaction using ether-js. Run the node-js script getTx.js present in the scripts folder, using following command:
+Get the transaction using ether-js. Run the node-js script getTransaction.js present in the scripts folder, using following command:
 
 ```
-$ node getTx.js 
+$ node getTransaction.js 
 ```
