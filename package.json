@@ -1,0 +1,16 @@
+{
+  "name": "pinata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "umer",
+  "license": "ISC",
+  "dependencies": {
+    "@pinata/sdk": "^1.1.26",
+    "axios": "^0.27.2",
+    "fs": "^0.0.1-security"
+  }
+}
